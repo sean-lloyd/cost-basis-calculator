@@ -70,9 +70,9 @@ Global Const UTXO_CostBasisOpenUSD = "G"
 Global Const UTXO_CostBasisVolumeOpen = "H"
 Global Const UTXO_Category = "I"
 Global Const UTXO_TXID = "J"
-Global Const UTXO_CB_Change = "K"
-Global Const UTXO_CB_Vol_Change = "L"
-Global Const UTXO_CB_Vol_Open = "M"
+Global Const UTXO_CY_CB_Change = "K"
+Global Const UTXO_CY_CB_Vol_Change = "L"
+Global Const UTXO_CY_CB_Vol_Open = "M"
 Global Const UTXO_LiqTXIDs = "N"
 
 ' Events Tab
