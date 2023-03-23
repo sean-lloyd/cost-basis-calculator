@@ -1,7 +1,7 @@
 Option Explicit
 
 ' Dashboard
-Global Const CurrentYear = "C4"
+Global Const CurrentYear = "B5"
 Global Const GL_Symbol_C = "R"
 Global Const GL_Method_C = "S"
 Global Const GL_Method_FirstRow = 6
