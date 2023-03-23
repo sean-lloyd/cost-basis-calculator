@@ -39,7 +39,7 @@ Sub Liquidate()
             For rUtxo = iFirstRow To iLastRow_Utxo
                 lUTXO_Symbol = wsUTXO.Cells(rUtxo, UTXO_Symbol).Value
                 lUTXO_DateAcquired = wsUTXO.Cells(rUtxo, UTXO_DateAcquired).Value
-                lUTXO_VolumeOpen = wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Open).Value
+                lUTXO_VolumeOpen = wsUTXO.Cells(rUtxo, UTXO_CB_Vol_Open).Value
                 lUTXO_PriceUSD = wsUTXO.Cells(rUtxo, UTXO_PriceUSD).Value
 
                 If lUTXO_Symbol = evtSymbol And lUTXO_DateAcquired <= evtDate And lUTXO_VolumeOpen > 0 Then
@@ -73,9 +73,9 @@ Sub Liquidate()
                     liquidation.WriteOut
 
                     ' Update UTXO tab
-                    wsUTXO.Cells(rUtxo, UTXO_CY_CB_Change).Value = liquidation.costBasis + wsUTXO.Cells(rUtxo, UTXO_CY_CB_Change).Value
-                    wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Change).Value = liquidation.volume + wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Change).Value
-                    wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Open).Value = Round(lUTXO_VolumeOpen - liquidation.volume, 8)
+                    wsUTXO.Cells(rUtxo, UTXO_CB_Change).Value = liquidation.costBasis + wsUTXO.Cells(rUtxo, UTXO_CB_Change).Value
+                    wsUTXO.Cells(rUtxo, UTXO_CB_Vol_Change).Value = liquidation.volume + wsUTXO.Cells(rUtxo, UTXO_CB_Vol_Change).Value
+                    wsUTXO.Cells(rUtxo, UTXO_CB_Vol_Open).Value = Round(lUTXO_VolumeOpen - liquidation.volume, 8)
                     wsUTXO.Cells(rUtxo, UTXO_LiqTXIDs).Value = wsUTXO.Cells(rUtxo, UTXO_LiqTXIDs).Value & ", " & evtTXID
 
                     evtVolume = evtVolume - liquidation.volume
