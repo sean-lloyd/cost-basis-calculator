@@ -107,6 +107,7 @@ Sub CreateUTXOs()
 End Sub
 
 Sub ClearUTXO()
+
     Dim wsUTXO As Worksheet, wsDash As Worksheet
     Dim iLastRow As Long, iFirstRow As Long, r As Long
     Dim iCurrYear As Integer

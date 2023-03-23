@@ -8,12 +8,15 @@ Sub RunAll()
     CY = wsDash.Range(CurrentYear).Value
 
     Application.StatusBar = "Backing Up File..."
-    Call Utilities.SaveBackupCopy
+    Call Utilities.SaveBackupCopy("Backups")
 
     Application.StatusBar = "Cleaning Up..."
     Call Create_UTXOs.ClearUTXO
     Call Create_Events.ClearEvents
     Call Liquidate_Events.ClearLiquidations
+
+    ' Restore sheets to beginning state for the year
+    Call Utilities.CopyContentsBetweenSheets("UTXOs_BegBal","UTXOs")
 
     ' Run the UTXOs, events, and liquidations
     Call RunYear(CY)
