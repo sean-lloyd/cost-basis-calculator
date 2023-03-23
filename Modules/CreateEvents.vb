@@ -58,11 +58,6 @@ Private Sub TradingEvents(currYear As Integer)
                 taxEvent.priceUSD = wsTR.Cells(r, TR_USDTotalCost).Value / taxEvent.volume
                 taxEvent.TXID = wsTR.Cells(r, TR_TXID).Value
 
-                If taxEvent.TXID = "7Vzut+aLV09zwxLmmoGqB6Tvm7o" Then
-                    Dim test as Integer
-                    test = "WHY DID THIS GET SELECTED?"
-                End If
-
                 taxEvent.WriteOut
 
                 ' Tax events for fees that are not absorbed by the buying or selling currency
