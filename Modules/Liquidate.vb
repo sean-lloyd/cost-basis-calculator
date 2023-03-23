@@ -73,9 +73,9 @@ Sub Liquidate()
                     liquidation.WriteOut
 
                     ' Update UTXO tab
-                    wsUTXO.Cells(rUtxo, UTXO_CY_CB_Change).Value = liquidation.costBasis + wsUTXO.Cells(rUtxo, UTXO_CY_CB_Change).Value
                     wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Change).Value = liquidation.volume + wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Change).Value
                     wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Open).Value = Round(lUTXO_VolumeOpen - liquidation.volume, 8)
+                    wsUTXO.Cells(rUtxo, UTXO_CY_CB_USD_Open).Value = lUTXO_PriceUSD * wsUTXO.Cells(rUtxo, UTXO_CY_CB_Vol_Open).Value
                     wsUTXO.Cells(rUtxo, UTXO_LiqTXIDs).Value = wsUTXO.Cells(rUtxo, UTXO_LiqTXIDs).Value & ", " & evtTXID
 
                     evtVolume = evtVolume - liquidation.volume

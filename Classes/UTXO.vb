@@ -10,7 +10,7 @@ Public costBasisOpen As Double
 Public costBasisVolOpen As Double
 Public category As String
 Public txid As String
-Public CY_CB_Change As Double
+Public CY_CB_USD As Double
 Public CY_CB_Vol_Change As Double
 Public CY_CB_Vol_Open As Double
 Public LiqTXIDs As String
@@ -18,7 +18,7 @@ Public LiqTXIDs As String
 Public Sub Liquidate(r)
     Dim wsUTXO As Worksheet
     Set wsUTXO = Worksheets.Item("UTXOs")
-    wsUTXO.Cells(r, UTXO_CY_CB_Change).Value = CY_CB_Change
+    wsUTXO.Cells(r, UTXO_CY_CB_USD_Open).Value = CY_CB_USD
     wsUTXO.Cells(r, UTXO_CY_CB_Vol_Change).Value = CY_CB_Vol_Change
     wsUTXO.Cells(r, UTXO_CY_CB_Vol_Open).Value = CY_CB_Vol_Open
     wsUTXO.Cells(r, UTXO_LiqTXIDs).Value = wsUTXO.Cells(r, UTXO_LiqTXIDs).Value & "," & LiqTXIDs
@@ -40,7 +40,7 @@ Public Sub WriteOut()
         .Cells(r, UTXO_CostBasisVolumeOpen).Value = costBasisVolOpen
         .Cells(r, UTXO_Category).Value = category
         .Cells(r, UTXO_TXID).Value = txid
-        .Cells(r, UTXO_CY_CB_Change).Value = 0
+        .Cells(r, UTXO_CY_CB_USD_Open).Value = price * costBasisVolOpen
         .Cells(r, UTXO_CY_CB_Vol_Change).Value = 0
         .Cells(r, UTXO_CY_CB_Vol_Open).Value = costBasisVolOpen
         .Cells(r, UTXO_LiqTXIDs).Value = ""

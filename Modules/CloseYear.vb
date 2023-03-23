@@ -59,9 +59,9 @@ Private Sub CloseUTXO()
             wsUTXO.Cells(r, UTXO_CostBasisOpenUSD).Value = Round(CB_Open * wsUTXO.Cells(r, UTXO_PriceUSD).Value,2)
             
             ' Set the current-year columns = 0
-            wsUTXO.Cells(r, UTXO_CY_CB_Change).Value = 0
             wsUTXO.Cells(r, UTXO_CY_CB_Vol_Change).Value = 0
-            wsUTXO.Cells(r, UTXO_CY_CB_Vol_Open).Value = 0
+            ' wsUTXO.Cells(r, UTXO_CY_CB_USD_Open).Value = 0
+            ' wsUTXO.Cells(r, UTXO_CY_CB_Vol_Open).Value = 0
         End IF
 
     Next r
