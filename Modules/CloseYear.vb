@@ -36,6 +36,38 @@ Sub CloseYear()
 
 End Sub
 
+Private Sub CloseUTXO()
+    Dim wsUTXO As Worksheet
+    Dim iFirstRow As Long, iLastRow As Long, r As Long
+    Dim CB_Open As Double
+
+    Set wsUTXO = Worksheets.Item("UTXOs")
+
+    iFirstRow = 2
+    iLastRow = wsUTXO.Range("A1048576").End(xlUp).Row
+    
+    ' Loop through the UTXOs and 
+    For r = iLastRow To iFirstRow Step -1 'start from the last row and go backwards to avoid skipping rows after deletion
+    
+        CB_Open = wsUTXO.Cells(r, UTXO_CY_CB_Vol_Open).Value
+
+        If CB_Open = 0 Then
+            wsUTXO.Rows(r).Delete 'Delete when fully liquidated
+        Else
+            ' Update the long-term columns
+            wsUTXO.Cells(r, UTXO_CostBasisVolumeOpen).Value = CB_Open
+            wsUTXO.Cells(r, UTXO_CostBasisOpenUSD).Value = Round(CB_Open * wsUTXO.Cells(r, UTXO_PriceUSD).Value,2)
+            
+            ' Set the current-year columns = 0
+            wsUTXO.Cells(r, UTXO_CY_CB_Change).Value = 0
+            wsUTXO.Cells(r, UTXO_CY_CB_Vol_Change).Value = 0
+            wsUTXO.Cells(r, UTXO_CY_CB_Vol_Open).Value = 0
+        End IF
+
+    Next r
+
+End Sub
+
 Private Sub SaveAsNewYear(newYear As String)
 ' Replace the last four characters of the old name with the new name and save the file
     Dim oldName As String

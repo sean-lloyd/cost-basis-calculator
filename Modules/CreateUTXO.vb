@@ -1,9 +1,8 @@
 Option Explicit
 
 Sub CreateUTXOs()
-    Dim wsDash As Worksheet, wsTR As Worksheet, wsSP As Worksheet, wsINC As Worksheet
+    Dim wsDash As Worksheet, wsTR As Worksheet, wsSP As Worksheet, wsINC As Worksheet, wsUTXO As Worksheet
     Dim iLastRow_TR As Long, iLastRow_SP As Long, iLastRow_INC As Long
-    Dim wsUTXO As Worksheet, iLastRow_UT As Long
     Dim iFirstRow As Long, r As Long
     Dim iCurrYear As Integer, recordYear As Integer
     Dim tradeAction As String, tradeCurrency As String, tradeFeeCurrency As String, eligible As String
