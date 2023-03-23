@@ -15,6 +15,9 @@ Sub CloseYear()
     ' Back up the file
     Call Utilities.SaveBackupCopy("Backups")
 
+    ' Close UTXOs
+    Call CloseUTXO
+
     ' Create file for the new year
     Call Utilities.CopyContentsBetweenSheets("UTXOs", "UTXOs_BegBal") ' Set next year's beginning balance
     Call Create_UTXOs.ClearUTXO
