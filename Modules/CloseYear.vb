@@ -16,8 +16,13 @@ Sub CloseYear()
     Call Utilities.SaveBackupCopy("Backups")
 
     ' Create file for the new year
+    Call Utilities.CopyContentsBetweenSheets("UTXOs", "UTXOs_BegBal") ' Set next year's beginning balance
+    Call Create_UTXOs.ClearUTXO
+    Call Create_Events.ClearEvents
+    Call Liquidate_Events.ClearLiquidations
+
+    wsDash.Activate
     wsDash.Range(CurrentYear).Value = CY + 1
-    Call Utilities.CopyContentsBetweenSheets("UTXOs", "UTXOs_BegBal")
 
     ' Save with new name
     Call SaveAsNewYear(CY + 1)
