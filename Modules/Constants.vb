@@ -2,9 +2,9 @@ Option Explicit
 
 ' Dashboard
 Global Const CurrentYear = "B5"
-Global Const GL_Symbol_C = "R"
-Global Const GL_Method_C = "S"
-Global Const GL_Method_FirstRow = 6
+Global Const GL_Symbol_C = "B"
+Global Const GL_Method_C = "C"
+Global Const GL_Method_FirstRow = 18
 
 ' Trading Tab
 Global Const TR_Year = "A"
