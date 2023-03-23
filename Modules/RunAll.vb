@@ -1,7 +1,7 @@
 Option Explicit
 
 Sub RunAll()
-    Dim wsDash As Worksheet, runThruCY As String, CY As String, year As Integer
+    Dim wsDash As Worksheet, CY As String
 
     Application.ScreenUpdating = False
     Set wsDash = Worksheets.Item("Dashboard")

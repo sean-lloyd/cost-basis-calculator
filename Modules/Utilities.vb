@@ -29,7 +29,6 @@ Sub SaveBackupCopy(Optional folderName As String)
 
 End Sub
 
-
 Sub CopyAndRenameSheet(sheetName, suffix)
 
     Dim originalSheet As Worksheet

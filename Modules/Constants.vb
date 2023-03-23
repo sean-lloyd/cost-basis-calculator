@@ -1,10 +1,9 @@
 Option Explicit
 
 ' Dashboard
-Global Const CurrentYear = "C3"
-Global Const RunThruCY_Flag = "C2"
-Global Const GL_Symbol_C = "B"
-Global Const GL_Method_C = "C"
+Global Const CurrentYear = "C4"
+Global Const GL_Symbol_C = "R"
+Global Const GL_Method_C = "S"
 Global Const GL_Method_FirstRow = 6
 
 ' Trading Tab
