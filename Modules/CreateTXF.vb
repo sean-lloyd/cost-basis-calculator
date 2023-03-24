@@ -1,3 +1,5 @@
+Option Explicit
+
 Sub PrintTXF()
     ' Declare Workbook variable
     Dim wsLiq As Worksheet, iFirstRow As Long, iLastRow As Long, r As Long
@@ -33,7 +35,7 @@ Sub PrintTXF()
     ' Write the line records
     For r = iFirstRow To iLastRow
         ' Declare TXF Fields
-        Dim symbol As String, vol As String
+        Dim symbol As String, vol As String, action As String
         Dim buyDate As Date, sellDate As Date
         Dim proceeds As Double, basis As Double
         Dim refLineNum As String
@@ -41,26 +43,29 @@ Sub PrintTXF()
         With wsLiq
             symbol = .Cells(r, LIQ_Symbol).Value
             vol = .Cells(r, LIQ_Volume).Value
+            action = .Cells(r, LIQ_Action).Value
             buyDate = .Cells(r, LIQ_DateAcquired).Value
             sellDate = .Cells(r, LIQ_DateSold).Value
-            proceeds = (.Cells(r, LIQ_Proceeds).Value)
-            basis = Cells(r, LIQ_CostBasis).Value
+            proceeds = .Cells(r, LIQ_Proceeds).Value
+            basis = .Cells(r, LIQ_CostBasis).Value
         End With
         
-        ' Short-Term = Line 712, Long-Term = Line 714 (Form 8949-C)
-        refLineNum = IIf((sellDate - buyDate) < 365, "712", "714")
-        
-        ' Pring lines to file
-        Print #FileNum, "TD"
-        Print #FileNum, "N" & refLineNum
-        Print #FileNum, "C1"
-        Print #FileNum, "L1"
-        Print #FileNum, "P" & vol & " " & symbol
-        Print #FileNum, "D" & Format(buyDate, "mm/dd/yyyy")
-        Print #FileNum, "D" & Format(sellDate, "mm/dd/yyyy")
-        Print #FileNum, Format(Round(basis,2), "$#0.00")
-        Print #FileNum, Format(Round(proceeds,2), "$#0.00")
-        Print #FileNum, "^"
+        If action <> "GIFT" And action <> "LOST" Then
+            ' Short-Term = Line 712, Long-Term = Line 714 (Form 8949-C)
+            refLineNum = IIf((sellDate - buyDate) < 365, "712", "714")
+            
+            ' Print lines to file
+            Print #FileNum, "TD"
+            Print #FileNum, "N" & refLineNum
+            Print #FileNum, "C1"
+            Print #FileNum, "L1"
+            Print #FileNum, "P" & vol & " " & symbol
+            Print #FileNum, "D" & Format(buyDate, "mm/dd/yyyy")
+            Print #FileNum, "D" & Format(sellDate, "mm/dd/yyyy")
+            Print #FileNum, Format(Round(basis,2), "$#0.00")
+            Print #FileNum, Format(Round(proceeds,2), "$#0.00")
+            Print #FileNum, "^"
+        End If
     Next r
 
     ' Close the file
